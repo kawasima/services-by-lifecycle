@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>提案</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <h1 class="title">
+            提案
+        </h1>
+        <form method="post" th:action="@{/proposal/submission/new}" th:object="${proposalSubmissionForm}">
+            <input type="hidden" name="projectId" th:value="*{projectId}"/>
+            <div class="field">
+                <label class="label">注記</label>
+                <div class="control">
+                    <input class="input" th:classappend="${#fields.hasErrors('note') ? 'is-danger' : ''}" type="text" th:field="*{note}" placeholder="Note">
+                </div>
+                <p class="help is-danger" th:if="${#fields.hasErrors('note')}" th:errors="*{note}">Name Error</p>
+            </div>
+            <div class="field">
+                <label class="label">見積</label>
+                <div class="control">
+                    <label class="radio"><input type="radio" name="estimationType" value="fixed">固定</label>
+                    <label class="radio"><input type="radio" name="estimationType" value="perHour">時間単価</label>
+                </div>
+                <div class="control">
+                    <input class="input" type="text" th:field="*{total}" placeholder="総額">
+                </div>
+                <p class="help is-danger" th:if="${#fields.hasErrors('total')}" th:errors="*{total}">Description Error</p>
+            </div>
+            <div class="field">
+                <p class="control">
+                <button class="button is-success" type="submit">登録</button>
+                </p>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>

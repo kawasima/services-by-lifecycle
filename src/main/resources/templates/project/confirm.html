@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>プロジェクト登録</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <h1 class="title">プロジェクト登録</h1>
+        <p>以下の内容で登録します</p>
+        <form method="post" action="/project/save" th:object="${projectRegistrationForm}">
+            <div class="field">
+                <label class="label">名前</label>
+                <div class="control">
+                    <span id="project-name" th:text="*{name}">名前</span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">説明</label>
+                <div class="control">
+                    <span id="project-description" th:text="*{description}"></span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">募集期間</label>
+                <div class="control">
+                    <span id="project-recruitment-begin-on" th:text="${#dates.format(projectRegistrationForm.recruitmentBeginOn)}">0000/00/00</span>
+                    〜
+                    <span id="project-recruitment-end-on" th:text="${#dates.format(projectRegistrationForm.recruitmentEndOn)}">0000/00/00</span>
+                </div>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <button id="button-registration" class="button is-success" type="submit">登録</button>
+                </p>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>

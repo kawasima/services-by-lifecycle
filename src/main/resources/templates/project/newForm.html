@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>プロジェクト登録</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-calendar@6.0.9/dist/css/bulma-calendar.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bulma-calendar@6.0.9/dist/js/bulma-calendar.min.js"></script>
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <h1 class="title">
+            プロジェクト登録
+        </h1>
+        <form method="post" action="/project/new" th:object="${projectRegistrationForm}">
+            <div class="field">
+                <label class="label">名前</label>
+                <div class="control">
+                    <input id="project-name" class="input" th:classappend="${#fields.hasErrors('name') ? 'is-danger' : ''}" type="text" th:field="*{name}" placeholder="Name">
+                </div>
+                <p class="help is-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+            </div>
+            <div class="field">
+                <label class="label">説明</label>
+                <div class="control">
+                    <input id="project-description" class="input" type="text" th:field="*{description}" placeholder="Description">
+                </div>
+                <p class="help is-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</p>
+            </div>
+            <div class="field">
+                <label class="label">募集期間</label>
+                <div class="control">
+                    <input id="project-recruitment-period" class="input" type="date" th:field="*{recruitmentPeriod}" placeholder="募集開始日">
+                </div>
+                <p class="help is-danger" th:if="${#fields.hasErrors('recruitmentPeriod')}" th:errors="*{recruitmentPeriod}">Recruitment period Error</p>
+            </div>
+            <div class="field">
+                <p class="control">
+                <button id="button-registration" class="button is-success" type="submit">登録</button>
+                </p>
+            </div>
+        </form>
+    </div>
+</section>
+<script>
+bulmaCalendar.attach('#project-recruitment-period[type="date"]', {
+  isRange: true
+});
+</script>
+</body>
+</html>

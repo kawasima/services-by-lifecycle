@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>提案</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <h1 class="title">提案</h1>
+        <form method="post" th:action="@{/proposal/submission/save}" th:object="${proposalSubmissionForm}">
+            <div class="field">
+                <label class="label">提案内容</label>
+                <div class="control">
+                    <span th:text="*{note}">注記</span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">見積</label>
+                <div class="control">
+                    <span th:text="*{total}"></span>
+                </div>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <button class="button is-success" type="submit">登録</button>
+                </p>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>
