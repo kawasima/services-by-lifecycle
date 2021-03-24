@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>提案完了</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <h1 class="title">クラウドソーシング</h1>
+        <div class="content">
+            <ul>
+                <li>
+                    <a th:href="@{/project/new}">案件登録</a>
+                </li>
+                <li>
+                    <a th:href="@{/proposal/submission/searchProject}">応募</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+</body>
+</html>
