@@ -13,6 +13,16 @@ import java.util.Date;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
+/**
+ * プロジェクト登録のユースケースのテスト.
+ * Springのテストサポート機能を使わずとも、ユースケースが依存する下位レイヤのコンポーネントをモック化すれば、
+ * 簡単にテストできる。
+ *
+ * 入力はコマンドとして作り、ユースケースを呼び出し、下位レイヤが正しく呼ばれたかをMockitoのVerifyで検証し、
+ * (必要ならば) 出力もAssertionする。
+ *
+ * @author kawasima
+ */
 class RegisterProjectUseCaseImplTest {
     SaveDraftProjectPort saveDraftProjectPort;
     RegisterProjectUseCaseImpl sut;

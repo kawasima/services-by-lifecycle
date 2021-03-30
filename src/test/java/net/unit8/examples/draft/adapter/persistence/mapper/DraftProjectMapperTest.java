@@ -15,6 +15,13 @@ import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * ドメイン層と永続化層のデータ変換のテスト.
+ *
+ * これは依存したとしても他のMapperクラスだけなので、Springの機能を使わずにテストが書ける。
+ *
+ * @author kawasima
+ */
 class DraftProjectMapperTest {
     private DraftProjectMapper sut;
 

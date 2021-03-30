@@ -14,6 +14,14 @@ import java.text.SimpleDateFormat;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 永続化層のテスト.
+ * 実際にデータベースアクセスしないと、テストにならないので、DataJpaTestを使ってテスト用データベースを構成し、
+ * SQLを実行して結果をアサーションする。
+ * そのため、Springコンテナを起動しDDLを発行するので、実行はかなり遅くなる。
+ *
+ * @author kawasima
+ */
 @DataJpaTest
 @Import({DraftProjectPersistenceAdapter.class, DraftProjectMapper.class})
 class DraftProjectPersistenceAdapterTest {

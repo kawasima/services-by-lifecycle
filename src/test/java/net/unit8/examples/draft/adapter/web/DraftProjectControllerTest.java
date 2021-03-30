@@ -19,6 +19,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * MVCコントローラのテスト.
+ * テスト目的としては、主に以下２つ
+ *
+ * - コントローラへの入力バリデーションを検証する
+ * - ユースケースを実行した結果、呼び出されるビューが適切であるかを検証する
+ *
+ * このため、下位レイヤのユースケースをモック化する。
+ *
+ * @author kawasima
+ */
 @WebMvcTest(controllers = DraftProjectController.class)
 class DraftProjectControllerTest {
     @Autowired
