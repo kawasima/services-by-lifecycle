@@ -46,7 +46,6 @@ public class DraftProjectController {
 
     @RequestMapping(value="/save", method=RequestMethod.POST)
     public String save(@ModelAttribute("projectRegistrationForm") @Validated ProjectRegistrationForm form,
-                       Model model,
                        SessionStatus sessionStatus) throws ParseException {
         registerProjectUseCase.handle(new RegisterProjectCommand(
                 form.getName(),
