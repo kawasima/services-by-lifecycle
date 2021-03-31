@@ -12,6 +12,6 @@ public interface DraftProjectRepository extends JpaRepository<DraftProjectJpaEnt
     @Query("SELECT dp FROM DraftProjectJpaEntity dp WHERE " +
             "NOT EXISTS (select pp FROM PublishedProjectJpaEntity pp WHERE pp.draftProject.id = dp.id) " +
             "AND dp.recruitmentBeginOn <= :standardDate " +
-            "AND dp.recruitmentEndOn > :standardDate")
+            "AND dp.recruitmentEndOn >= :standardDate")
     Streamable<DraftProjectJpaEntity> findPublicationTargetProjects(@Param("standardDate") Date standardDate);
 }
