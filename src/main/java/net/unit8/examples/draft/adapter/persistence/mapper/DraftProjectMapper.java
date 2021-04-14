@@ -3,6 +3,7 @@ package net.unit8.examples.draft.adapter.persistence.mapper;
 import net.unit8.examples.draft.adapter.persistence.entity.DraftProjectJpaEntity;
 import net.unit8.examples.draft.domain.DraftProject;
 import net.unit8.examples.draft.domain.DraftProjectId;
+import net.unit8.examples.user.domain.ProjectOwnerId;
 import org.springframework.data.domain.Range;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ public class DraftProjectMapper {
     public DraftProject mapToDomain(DraftProjectJpaEntity entity) {
         return DraftProject.withId(
                 new DraftProjectId(entity.getId()),
+                new ProjectOwnerId(entity.getProjectOwnerId()),
                 entity.getName(),
                 entity.getDescription(),
                 Range.closed(entity.getRecruitmentBeginOn(),

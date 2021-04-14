@@ -2,6 +2,7 @@ package net.unit8.examples.draft.application.internal.usecase;
 
 import net.unit8.examples.draft.application.command.RegisterProjectCommand;
 import net.unit8.examples.draft.application.port.SaveDraftProjectPort;
+import net.unit8.examples.user.domain.ProjectOwnerId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -41,6 +42,7 @@ class RegisterProjectUseCaseImplTest {
         Date endDate = df.parse("2021/1/16");
 
         RegisterProjectCommand registerProjectCommand = new RegisterProjectCommand(
+                new ProjectOwnerId(1L),
                 name,
                 description,
                 beginDate,

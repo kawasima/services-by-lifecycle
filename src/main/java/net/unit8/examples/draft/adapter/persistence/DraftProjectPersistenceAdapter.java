@@ -8,6 +8,7 @@ import net.unit8.examples.draft.application.port.SaveDraftProjectPort;
 import net.unit8.examples.draft.domain.DraftProject;
 import net.unit8.examples.draft.domain.DraftProjectId;
 import net.unit8.examples.stereotype.PersistenceAdapter;
+import net.unit8.examples.user.domain.ProjectOwnerId;
 import org.springframework.data.domain.Range;
 
 import java.sql.Date;
@@ -30,6 +31,7 @@ public class DraftProjectPersistenceAdapter implements SaveDraftProjectPort, Get
         draftProjectRepository.save(entity);
         return DraftProject.withId(
                 new DraftProjectId(entity.getId()),
+                new ProjectOwnerId(entity.getProjectOwnerId()),
                 entity.getName(),
                 entity.getDescription(),
                 Range.closed(entity.getRecruitmentBeginOn(), entity.getRecruitmentEndOn())

@@ -18,6 +18,7 @@ class RegisterProjectUseCaseImpl implements RegisterProjectUseCase {
     @Override
     public DraftProject handle(RegisterProjectCommand command) {
         return saveDraftProjectPort.save(DraftProject.withoutId(
+                command.getProjectOwnerId(),
                 command.getName(),
                 command.getDescription(),
                 Range.closed(

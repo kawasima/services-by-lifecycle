@@ -1,4 +1,4 @@
-package net.unit8.examples.proposal.submission.adapter.web;
+package net.unit8.examples.web;
 
 import net.unit8.examples.projectsearch.application.command.SearchProjectCommand;
 import net.unit8.examples.projectsearch.application.domain.Project;
@@ -7,7 +7,6 @@ import net.unit8.examples.projectsearch.application.usecase.SearchProjectUseCase
 import net.unit8.examples.proposal.submission.application.command.SubmitProposalCommand;
 import net.unit8.examples.proposal.submission.application.usecase.SubmitProposalUseCase;
 import net.unit8.examples.proposal.submission.domain.FixedEstimation;
-import net.unit8.examples.proposal.submission.domain.PerHourEstimation;
 import net.unit8.examples.stereotype.WebAdapter;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;

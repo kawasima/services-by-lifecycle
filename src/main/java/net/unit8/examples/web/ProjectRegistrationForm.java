@@ -1,4 +1,4 @@
-package net.unit8.examples.draft.adapter.web;
+package net.unit8.examples.web;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;

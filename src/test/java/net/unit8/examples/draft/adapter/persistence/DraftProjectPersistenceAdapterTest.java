@@ -4,6 +4,7 @@ import net.unit8.examples.draft.adapter.persistence.entity.DraftProjectJpaEntity
 import net.unit8.examples.draft.adapter.persistence.mapper.DraftProjectMapper;
 import net.unit8.examples.draft.adapter.persistence.repository.DraftProjectRepository;
 import net.unit8.examples.draft.domain.DraftProject;
+import net.unit8.examples.user.domain.ProjectOwnerId;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -34,7 +35,8 @@ class DraftProjectPersistenceAdapterTest {
     @Test
     void saveDraftProject() throws Exception {
         SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        DraftProject draftProject = DraftProject.withoutId("project1", "description1",
+        DraftProject draftProject = DraftProject.withoutId(new ProjectOwnerId(1L),
+                "project1", "description1",
                 Range.closed(df.parse("12/15/2020"), df.parse("01/16/2021")));
         sut.save(draftProject);
         assertThat(draftProjectRepository.count()).isEqualTo(1);

@@ -2,6 +2,9 @@ package net.unit8.examples.draft.adapter.web;
 
 import net.unit8.examples.draft.application.command.RegisterProjectCommand;
 import net.unit8.examples.draft.application.usecase.RegisterProjectUseCase;
+import net.unit8.examples.user.domain.ProjectOwnerId;
+import net.unit8.examples.web.DraftProjectController;
+import net.unit8.examples.web.ProjectRegistrationForm;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -63,6 +66,7 @@ class DraftProjectControllerTest {
         SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         then(registerProjectUseCase).should()
                 .handle(eq(new RegisterProjectCommand(
+                        new ProjectOwnerId(1L),
                         "project1",
                         "description1",
                         df.parse("12/15/2020"),

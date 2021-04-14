@@ -1,8 +1,11 @@
-package net.unit8.examples.draft.adapter.web;
+package net.unit8.examples.web;
 
 import net.unit8.examples.draft.application.command.RegisterProjectCommand;
 import net.unit8.examples.draft.application.usecase.RegisterProjectUseCase;
 import net.unit8.examples.stereotype.WebAdapter;
+import net.unit8.examples.user.domain.Member;
+import net.unit8.examples.user.domain.Requester;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,22 +42,28 @@ public class DraftProjectController {
     @RequestMapping(value="/new", method=RequestMethod.POST)
     public String confirmForm(@Validated ProjectRegistrationForm form, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return newForm(model);
+            return "project/newForm";
         }
         return "project/confirm";
     }
 
     @RequestMapping(value="/save", method=RequestMethod.POST)
     public String save(@ModelAttribute("projectRegistrationForm") @Validated ProjectRegistrationForm form,
+                       @AuthenticationPrincipal Member member,
                        SessionStatus sessionStatus) throws ParseException {
-        registerProjectUseCase.handle(new RegisterProjectCommand(
-                form.getName(),
-                form.getDescription(),
-                form.getRecruitmentBeginOn(),
-                form.getRecruitmentEndOn()
-        ));
-        sessionStatus.setComplete();
-        return "project/complete";
+        if (member instanceof Requester requester) {
+            registerProjectUseCase.handle(new RegisterProjectCommand(
+                    requester.getProjectOwnerId(),
+                    form.getName(),
+                    form.getDescription(),
+                    form.getRecruitmentBeginOn(),
+                    form.getRecruitmentEndOn()
+            ));
+            sessionStatus.setComplete();
+            return "project/complete";
+        } else {
+            throw new IllegalArgumentException("You are not a requester");
+        }
     }
 
 }

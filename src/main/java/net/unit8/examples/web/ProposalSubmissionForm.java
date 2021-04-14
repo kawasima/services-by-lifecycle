@@ -1,4 +1,4 @@
-package net.unit8.examples.proposal.submission.adapter.web;
+package net.unit8.examples.web;
 
 import lombok.Data;
 
