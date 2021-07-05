@@ -8,6 +8,8 @@ import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Data
@@ -21,13 +23,13 @@ public class ProjectRegistrationForm implements Serializable {
     @Pattern(regexp = "\\d{2}/\\d{2}/\\d{4} - \\d{2}/\\d{2}/\\d{4}")
     private String recruitmentPeriod;
 
-    public Date getRecruitmentBeginOn() throws ParseException {
+    public LocalDate getRecruitmentBeginOn() throws ParseException {
         String[] range = recruitmentPeriod.split("\\s+-\\s+",2);
-        return new SimpleDateFormat("MM/dd/yyyy").parse(range[0]);
+        return LocalDate.parse(range[0], DateTimeFormatter.ofPattern("MM/dd/yyyy"));
     }
 
-    public Date getRecruitmentEndOn() throws ParseException {
+    public LocalDate getRecruitmentEndOn() throws ParseException {
         String[] range = recruitmentPeriod.split("\\s+-\\s+",2);
-        return new SimpleDateFormat("MM/dd/yyyy").parse(range[1]);
+        return LocalDate.parse(range[1], DateTimeFormatter.ofPattern("MM/dd/yyyy"));
     }
 }

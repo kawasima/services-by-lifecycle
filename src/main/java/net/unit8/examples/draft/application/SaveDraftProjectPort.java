@@ -1,7 +1,7 @@
-package net.unit8.examples.draft.application.port;
+package net.unit8.examples.draft.application;
 
 import net.unit8.examples.draft.domain.DraftProject;
 
 public interface SaveDraftProjectPort {
-    DraftProject save(DraftProject project);
+    void save(DraftProject project);
 }

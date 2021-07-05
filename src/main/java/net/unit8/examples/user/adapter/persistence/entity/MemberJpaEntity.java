@@ -12,8 +12,7 @@ import java.io.Serializable;
 @Data
 public class MemberJpaEntity implements Serializable {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
     private String email;
     private String password;
 }

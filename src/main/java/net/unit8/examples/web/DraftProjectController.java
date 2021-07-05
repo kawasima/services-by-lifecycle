@@ -1,7 +1,7 @@
 package net.unit8.examples.web;
 
-import net.unit8.examples.draft.application.command.RegisterProjectCommand;
-import net.unit8.examples.draft.application.usecase.RegisterProjectUseCase;
+import net.unit8.examples.draft.application.RegisterProjectCommand;
+import net.unit8.examples.draft.application.RegisterProjectUseCase;
 import net.unit8.examples.stereotype.WebAdapter;
 import net.unit8.examples.user.domain.Member;
 import net.unit8.examples.user.domain.Requester;
@@ -53,7 +53,7 @@ public class DraftProjectController {
                        SessionStatus sessionStatus) throws ParseException {
         if (member instanceof Requester requester) {
             registerProjectUseCase.handle(new RegisterProjectCommand(
-                    requester.getProjectOwnerId(),
+                    requester.getProjectOwnerId().getValue(),
                     form.getName(),
                     form.getDescription(),
                     form.getRecruitmentBeginOn(),

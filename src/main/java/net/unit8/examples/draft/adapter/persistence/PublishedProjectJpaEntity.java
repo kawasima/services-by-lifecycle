@@ -1,4 +1,4 @@
-package net.unit8.examples.draft.adapter.persistence.entity;
+package net.unit8.examples.draft.adapter.persistence;
 
 import lombok.Data;
 

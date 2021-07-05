@@ -1,9 +1,9 @@
-package net.unit8.examples.draft.application.internal.usecase;
+package net.unit8.examples.draft.application.impl;
 
-import net.unit8.examples.draft.application.event.PublishProjectEvent;
-import net.unit8.examples.draft.application.port.GetPublicationTargetProjectsPort;
-import net.unit8.examples.draft.application.port.PublishProjectPort;
-import net.unit8.examples.draft.application.usecase.PublishProjectUseCase;
+import net.unit8.examples.draft.domain.PublishProjectEvent;
+import net.unit8.examples.draft.application.GetPublicationTargetProjectsPort;
+import net.unit8.examples.draft.application.PublishProjectPort;
+import net.unit8.examples.draft.application.PublishProjectUseCase;
 import net.unit8.examples.draft.domain.DraftProject;
 import net.unit8.examples.stereotype.UseCase;
 import org.slf4j.Logger;

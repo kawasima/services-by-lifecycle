@@ -1,6 +1,6 @@
-package net.unit8.examples.draft.application.usecase;
+package net.unit8.examples.draft.application;
 
-import net.unit8.examples.draft.application.command.RegisterProjectCommand;
+import net.unit8.examples.draft.application.RegisterProjectCommand;
 import net.unit8.examples.draft.domain.DraftProject;
 
 public interface RegisterProjectUseCase {

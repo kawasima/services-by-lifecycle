@@ -12,7 +12,7 @@ public class Worker extends Member{
     private String skill;
     private String qualification;
 
-    public Worker(Long id, String email, String password, String skill, String qualification) {
+    public Worker(String id, String email, String password, String skill, String qualification) {
         super(id, email, password);
     }
 

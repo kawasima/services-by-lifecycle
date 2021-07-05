@@ -1,4 +1,4 @@
-package net.unit8.examples.draft.application.event;
+package net.unit8.examples.draft.domain;
 
 import lombok.Value;
 import net.unit8.examples.draft.domain.DraftProject;
@@ -17,7 +17,9 @@ public class PublishProjectEvent implements Serializable {
 
     public PublishProjectEvent(List<DraftProject> draftProjects) {
         projects = draftProjects.stream()
-                .map(dp -> new PublishedProject(dp.getId().getValue(), dp.getName(), dp.getDescription()))
+                .map(dp -> new PublishedProject(dp.getId().getValue(),
+                        dp.getName().getValue(),
+                        dp.getDescription().getValue()))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -33,7 +35,7 @@ public class PublishProjectEvent implements Serializable {
 
     @Value
     public static class PublishedProject implements Serializable {
-        Long id;
+        String id;
         String name;
         String description;
     }

@@ -1,7 +1,9 @@
-package net.unit8.examples.draft.application.internal.usecase;
+package net.unit8.examples.draft.application.impl;
 
-import net.unit8.examples.draft.application.command.RegisterProjectCommand;
-import net.unit8.examples.draft.application.port.SaveDraftProjectPort;
+import com.aventrix.jnanoid.jnanoid.NanoIdUtils;
+import net.unit8.examples.draft.application.RegisterProjectCommand;
+import net.unit8.examples.draft.application.impl.RegisterProjectUseCaseImpl;
+import net.unit8.examples.draft.application.SaveDraftProjectPort;
 import net.unit8.examples.user.domain.ProjectOwnerId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +11,8 @@ import org.mockito.Mockito;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -37,12 +41,12 @@ class RegisterProjectUseCaseImplTest {
     void test() throws ParseException {
         String name = "project1";
         String description = "description1";
-        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-        Date beginDate = df.parse("2020/12/15");
-        Date endDate = df.parse("2021/1/16");
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate beginDate = LocalDate.parse("2020/12/15", df);
+        LocalDate endDate = LocalDate.parse("2021/01/16", df);
 
         RegisterProjectCommand registerProjectCommand = new RegisterProjectCommand(
-                new ProjectOwnerId(1L),
+                NanoIdUtils.randomNanoId(),
                 name,
                 description,
                 beginDate,

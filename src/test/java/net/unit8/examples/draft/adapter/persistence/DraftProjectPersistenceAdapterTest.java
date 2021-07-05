@@ -1,9 +1,7 @@
 package net.unit8.examples.draft.adapter.persistence;
 
-import net.unit8.examples.draft.adapter.persistence.entity.DraftProjectJpaEntity;
-import net.unit8.examples.draft.adapter.persistence.mapper.DraftProjectMapper;
-import net.unit8.examples.draft.adapter.persistence.repository.DraftProjectRepository;
-import net.unit8.examples.draft.domain.DraftProject;
+import com.aventrix.jnanoid.jnanoid.NanoIdUtils;
+import net.unit8.examples.draft.domain.*;
 import net.unit8.examples.user.domain.ProjectOwnerId;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.Range;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -34,10 +34,13 @@ class DraftProjectPersistenceAdapterTest {
 
     @Test
     void saveDraftProject() throws Exception {
-        SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        DraftProject draftProject = DraftProject.withoutId(new ProjectOwnerId(1L),
-                "project1", "description1",
-                Range.closed(df.parse("12/15/2020"), df.parse("01/16/2021")));
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DraftProject draftProject = DraftProject.of(
+                DraftProjectId.of(NanoIdUtils.randomNanoId()),
+                ProjectOwnerId.of(NanoIdUtils.randomNanoId()),
+                DraftProjectName.of("project1"),
+                DraftProjectDescription.of("description1"),
+                RecruitmentPeriod.of(LocalDate.parse("12/15/2020", df), LocalDate.parse("01/16/2021", df)));
         sut.save(draftProject);
         assertThat(draftProjectRepository.count()).isEqualTo(1);
 

@@ -12,6 +12,5 @@ import javax.persistence.Table;
 @Data
 public class ProjectOwnerJpaEntity {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
 }

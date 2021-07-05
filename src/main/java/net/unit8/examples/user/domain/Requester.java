@@ -11,7 +11,7 @@ import java.util.Set;
 public class Requester extends Member {
     private final ProjectOwnerId projectOwnerId;
 
-    public Requester(Long id, String email, String password, ProjectOwnerId projectOwnerId) {
+    public Requester(String id, String email, String password, ProjectOwnerId projectOwnerId) {
         super(id, email, password);
         this.projectOwnerId = projectOwnerId;
     }

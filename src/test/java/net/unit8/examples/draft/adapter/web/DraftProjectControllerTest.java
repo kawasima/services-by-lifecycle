@@ -1,8 +1,8 @@
 package net.unit8.examples.draft.adapter.web;
 
-import net.unit8.examples.draft.application.command.RegisterProjectCommand;
-import net.unit8.examples.draft.application.usecase.RegisterProjectUseCase;
-import net.unit8.examples.user.domain.ProjectOwnerId;
+import com.aventrix.jnanoid.jnanoid.NanoIdUtils;
+import net.unit8.examples.draft.application.RegisterProjectCommand;
+import net.unit8.examples.draft.application.RegisterProjectUseCase;
 import net.unit8.examples.web.DraftProjectController;
 import net.unit8.examples.web.ProjectRegistrationForm;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.util.LinkedMultiValueMap;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -63,14 +64,14 @@ class DraftProjectControllerTest {
                 .flashAttr("projectRegistrationForm", form))
                 .andExpect(status().isOk());
 
-        SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         then(registerProjectUseCase).should()
                 .handle(eq(new RegisterProjectCommand(
-                        new ProjectOwnerId(1L),
+                        NanoIdUtils.randomNanoId(),
                         "project1",
                         "description1",
-                        df.parse("12/15/2020"),
-                        df.parse("01/16/2021")
+                        LocalDate.parse("12/15/2020", df),
+                        LocalDate.parse("01/16/2021", df)
                 )));
     }
 }

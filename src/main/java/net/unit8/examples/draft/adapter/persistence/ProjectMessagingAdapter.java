@@ -2,11 +2,8 @@ package net.unit8.examples.draft.adapter.persistence;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.unit8.examples.draft.adapter.persistence.entity.PublishedProjectJpaEntity;
-import net.unit8.examples.draft.adapter.persistence.repository.DraftProjectRepository;
-import net.unit8.examples.draft.adapter.persistence.repository.PublishedProjectRepository;
-import net.unit8.examples.draft.application.event.PublishProjectEvent;
-import net.unit8.examples.draft.application.port.PublishProjectPort;
+import net.unit8.examples.draft.domain.PublishProjectEvent;
+import net.unit8.examples.draft.application.PublishProjectPort;
 import net.unit8.examples.stereotype.PersistenceAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

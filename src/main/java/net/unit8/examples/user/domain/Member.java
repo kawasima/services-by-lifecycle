@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @AllArgsConstructor
 @Getter
 public abstract class Member implements UserDetails {
-    private final Long id;
+    private final String id;
     private final String email;
     private final String password;
 
