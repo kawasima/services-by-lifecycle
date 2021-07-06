@@ -1,11 +1,11 @@
 package net.unit8.examples.web;
 
-import net.unit8.examples.projectsearch.application.command.SearchProjectCommand;
-import net.unit8.examples.projectsearch.application.domain.Project;
-import net.unit8.examples.projectsearch.application.domain.ProjectId;
-import net.unit8.examples.projectsearch.application.usecase.SearchProjectUseCase;
-import net.unit8.examples.proposal.submission.application.command.SubmitProposalCommand;
-import net.unit8.examples.proposal.submission.application.usecase.SubmitProposalUseCase;
+import net.unit8.examples.projectsearch.application.SearchProjectCommand;
+import net.unit8.examples.projectsearch.domain.Project;
+import net.unit8.examples.projectsearch.domain.ProjectId;
+import net.unit8.examples.projectsearch.application.SearchProjectUseCase;
+import net.unit8.examples.proposal.submission.application.SubmitProposalCommand;
+import net.unit8.examples.proposal.submission.application.SubmitProposalUseCase;
 import net.unit8.examples.proposal.submission.domain.FixedEstimation;
 import net.unit8.examples.stereotype.WebAdapter;
 import org.springframework.data.domain.Page;

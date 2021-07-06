@@ -11,7 +11,7 @@
     <div class="container">
         <h1 class="title">プロジェクト登録</h1>
         <p>以下の内容で登録します</p>
-        <form method="post" action="/project/save" th:object="${projectRegistrationForm}">
+        <form method="post" th:action="@{/project/save}" th:object="${projectRegistrationForm}">
             <div class="field">
                 <label class="label">名前</label>
                 <div class="control">
@@ -27,9 +27,9 @@
             <div class="field">
                 <label class="label">募集期間</label>
                 <div class="control">
-                    <span id="project-recruitment-begin-on" th:text="${#dates.format(projectRegistrationForm.recruitmentBeginOn)}">0000/00/00</span>
+                    <span id="project-recruitment-begin-on" th:text="${#temporals.format(projectRegistrationForm.recruitmentBeginOn)}">0000/00/00</span>
                     〜
-                    <span id="project-recruitment-end-on" th:text="${#dates.format(projectRegistrationForm.recruitmentEndOn)}">0000/00/00</span>
+                    <span id="project-recruitment-end-on" th:text="${#temporals.format(projectRegistrationForm.recruitmentEndOn)}">0000/00/00</span>
                 </div>
             </div>
             <div class="field">

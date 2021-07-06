@@ -7,9 +7,11 @@ import net.unit8.examples.draft.domain.DraftProjectId;
 import net.unit8.examples.draft.domain.DraftProjectName;
 import net.unit8.examples.stereotype.PersistenceAdapter;
 import net.unit8.examples.user.domain.ProjectOwnerId;
+import org.apache.tomcat.jni.Local;
 import org.springframework.data.domain.Range;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.stream.Stream;
 
 @PersistenceAdapter
@@ -31,7 +33,7 @@ class DraftProjectPersistenceAdapter implements SaveDraftProjectPort, GetPublica
 
     @Override
     public Stream<DraftProject> getPublicationTargetProjects() {
-        Date standardDate = new Date(System.currentTimeMillis());
+        LocalDate standardDate = LocalDate.now();
         return draftProjectRepository.findPublicationTargetProjects(standardDate)
                 .map(draftProjectMapper::mapToDomain)
                 .stream();

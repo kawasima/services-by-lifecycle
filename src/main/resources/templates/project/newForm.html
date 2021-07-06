@@ -14,7 +14,7 @@
         <h1 class="title">
             プロジェクト登録
         </h1>
-        <form method="post" action="/project/new" th:object="${projectRegistrationForm}">
+        <form method="post" th:action="@{/project/new}" th:object="${projectRegistrationForm}">
             <div class="field">
                 <label class="label">名前</label>
                 <div class="control">

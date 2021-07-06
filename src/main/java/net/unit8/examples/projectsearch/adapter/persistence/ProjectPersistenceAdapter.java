@@ -1,9 +1,7 @@
 package net.unit8.examples.projectsearch.adapter.persistence;
 
-import net.unit8.examples.projectsearch.adapter.persistence.mapper.ProjectMapper;
-import net.unit8.examples.projectsearch.adapter.persistence.repository.ProjectRepository;
-import net.unit8.examples.projectsearch.application.domain.Project;
-import net.unit8.examples.projectsearch.application.port.SearchProjectPort;
+import net.unit8.examples.projectsearch.domain.Project;
+import net.unit8.examples.projectsearch.application.SearchProjectPort;
 import net.unit8.examples.stereotype.PersistenceAdapter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

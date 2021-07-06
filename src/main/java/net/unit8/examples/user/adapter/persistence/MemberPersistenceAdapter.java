@@ -1,9 +1,6 @@
 package net.unit8.examples.user.adapter.persistence;
 
 import net.unit8.examples.stereotype.PersistenceAdapter;
-import net.unit8.examples.user.adapter.persistence.entity.RequesterJpaEntity;
-import net.unit8.examples.user.adapter.persistence.entity.WorkerJpaEntity;
-import net.unit8.examples.user.adapter.persistence.repository.MemberRepository;
 import net.unit8.examples.user.domain.ProjectOwnerId;
 import net.unit8.examples.user.domain.Requester;
 import net.unit8.examples.user.domain.Worker;
