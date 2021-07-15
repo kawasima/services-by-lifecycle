@@ -11,8 +11,7 @@ import java.util.List;
 @Data
 public class ProposalJpaEntity implements Serializable {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
 
     @Column(name = "project_id")
     private String projectId;

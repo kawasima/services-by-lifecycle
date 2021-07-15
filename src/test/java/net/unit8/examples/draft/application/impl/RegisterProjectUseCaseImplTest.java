@@ -2,18 +2,17 @@ package net.unit8.examples.draft.application.impl;
 
 import com.aventrix.jnanoid.jnanoid.NanoIdUtils;
 import net.unit8.examples.draft.application.RegisterProjectCommand;
-import net.unit8.examples.draft.application.impl.RegisterProjectUseCaseImpl;
 import net.unit8.examples.draft.application.SaveDraftProjectPort;
-import net.unit8.examples.user.domain.ProjectOwnerId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -31,10 +30,14 @@ import static org.mockito.Mockito.verify;
 class RegisterProjectUseCaseImplTest {
     SaveDraftProjectPort saveDraftProjectPort;
     RegisterProjectUseCaseImpl sut;
+    TransactionTemplate tx;
+
     @BeforeEach
     void setup() {
         saveDraftProjectPort = Mockito.mock(SaveDraftProjectPort.class);
-        sut = new RegisterProjectUseCaseImpl(saveDraftProjectPort);
+        PlatformTransactionManager tm = Mockito.mock(PlatformTransactionManager.class);
+        tx = new TransactionTemplate(tm);
+        sut = new RegisterProjectUseCaseImpl(saveDraftProjectPort, tx);
     }
 
     @Test

@@ -1,8 +1,8 @@
 package net.unit8.examples.draft.application;
 
-import net.unit8.examples.draft.application.RegisterProjectCommand;
-import net.unit8.examples.draft.domain.DraftProject;
+import am.ik.yavi.core.Validated;
+import net.unit8.examples.draft.domain.RegisteredProjectEvent;
 
 public interface RegisterProjectUseCase {
-    DraftProject handle(RegisterProjectCommand command);
+    Validated<RegisteredProjectEvent> handle(RegisterProjectCommand command);
 }

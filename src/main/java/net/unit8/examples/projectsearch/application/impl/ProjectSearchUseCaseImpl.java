@@ -1,6 +1,6 @@
 package net.unit8.examples.projectsearch.application.impl;
 
-import net.unit8.examples.projectsearch.application.SearchProjectCommand;
+import net.unit8.examples.projectsearch.application.SearchProjectQuery;
 import net.unit8.examples.projectsearch.domain.Project;
 import net.unit8.examples.projectsearch.application.SearchProjectPort;
 import net.unit8.examples.projectsearch.application.SearchProjectUseCase;
@@ -16,7 +16,7 @@ public class ProjectSearchUseCaseImpl implements SearchProjectUseCase {
     }
 
     @Override
-    public Page<Project> search(SearchProjectCommand command) {
+    public Page<Project> search(SearchProjectQuery command) {
         return searchProjectPort.search(command.getQuery());
     }
 }

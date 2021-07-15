@@ -15,7 +15,7 @@ class SelectProposal1stRoundMapper {
 
     public SelectProposal1stRound mapToDomain(ProposalSelected1stRoundJpaEntity entity) {
         return SelectProposal1stRound.withId(
-                new ProposalId(entity.getProposal().getId()),
+                ProposalId.of(entity.getProposal().getId()),
                 entity.getReason()
         );
     }

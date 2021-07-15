@@ -1,6 +1,6 @@
 package net.unit8.examples.web;
 
-import net.unit8.examples.projectsearch.application.SearchProjectCommand;
+import net.unit8.examples.projectsearch.application.SearchProjectQuery;
 import net.unit8.examples.projectsearch.domain.Project;
 import net.unit8.examples.projectsearch.domain.ProjectId;
 import net.unit8.examples.projectsearch.application.SearchProjectUseCase;
@@ -42,7 +42,7 @@ public class ProposalSubmissionController {
     public String searchProject(@RequestParam(name = "q", required = false) String query,
                                 @RequestParam(name = "p", required = false) Long pageNumber,
                                 Model model) {
-        SearchProjectCommand command = new SearchProjectCommand(query);
+        SearchProjectQuery command = new SearchProjectQuery(query);
         Page<Project> projects = searchProjectUseCase.search(command);
         model.addAttribute("projects", projects);
         int totalPages = projects.getTotalPages();
@@ -88,7 +88,7 @@ public class ProposalSubmissionController {
                        Model model,
                        SessionStatus sessionStatus) {
         submitProposalUseCase.handle(new SubmitProposalCommand(
-                new ProjectId(form.getProjectId()),
+                ProjectId.of(form.getProjectId()),
                 new FixedEstimation(form.getTotal())
         ));
         sessionStatus.setComplete();

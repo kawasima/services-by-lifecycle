@@ -23,7 +23,7 @@ public class RecruitmentPeriod {
     }
 
     public static RecruitmentPeriod of(LocalDate beginDate, LocalDate endDate) {
-        return validator.validate(beginDate, endDate).orElseThrow(violations -> new IllegalArgumentException(violations.toString()));
+        return validator.validated(beginDate, endDate);
     }
 
     public Optional<LocalDate> getBeginDate() {

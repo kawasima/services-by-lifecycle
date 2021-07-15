@@ -2,6 +2,7 @@ package net.unit8.examples.draft.domain;
 
 import am.ik.yavi.arguments.StringValidator;
 import am.ik.yavi.builder.StringValidatorBuilder;
+import com.aventrix.jnanoid.jnanoid.NanoIdUtils;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Value;
@@ -22,7 +23,11 @@ public class DraftProjectId implements Serializable {
         return validator;
     }
 
+    public DraftProjectId() {
+        value = NanoIdUtils.randomNanoId();
+    }
+
     public static DraftProjectId of(String value) {
-        return validator.validate(value).orElseThrow(violations -> new IllegalArgumentException(violations.toString()));
+        return validator.validated(value);
     }
 }

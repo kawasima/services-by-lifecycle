@@ -9,19 +9,20 @@ import lombok.Value;
 
 @Value
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class ProjectId {
+public class ProjectName {
     String value;
 
-    private static final StringValidator<ProjectId> validator = StringValidatorBuilder
-            .of("projectId", c -> c.notBlank())
+    private static final StringValidator<ProjectName> validator = StringValidatorBuilder
+            .of("projectName", c -> c.notBlank().lessThanOrEqual(255))
             .build()
-            .andThen(ProjectId::new);
+            .andThen(ProjectName::new);
 
-    public static StringValidator<ProjectId> validator() {
+    public static StringValidator<ProjectName> validator() {
         return validator;
     }
 
-    public static ProjectId of(String value) {
-        return validator.validate(value).orElseThrow(ConstraintViolationsException::new);
+    public static ProjectName of(String value) {
+        return validator.validated(value);
     }
+
 }

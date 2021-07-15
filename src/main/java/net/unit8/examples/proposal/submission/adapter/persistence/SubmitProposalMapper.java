@@ -51,8 +51,8 @@ class SubmitProposalMapper {
         }
 
         return SubmitProposal.withId(
-                new ProposalId(entity.getId()),
-                new ProjectId(entity.getProposal().getProjectId()),
+                ProposalId.of(entity.getId()),
+                ProjectId.of(entity.getProposal().getProjectId()),
                 estimation
         );
     }

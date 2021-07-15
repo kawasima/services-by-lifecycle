@@ -17,9 +17,9 @@ class DraftProjectMapper {
                         DraftProjectName.validator().compose(DraftProjectJpaEntity::getName),
                         DraftProjectDescription.validator().compose(DraftProjectJpaEntity::getDescription),
                         RecruitmentPeriod.validator().<DraftProjectJpaEntity>compose(c -> Arguments.of(c.getRecruitmentBeginOn(), c.getRecruitmentEndOn())))
-                .apply(DraftProject::new);
+                .apply(DraftProject::of);
 
-        return draftProjectValidator.validate(entity).orElseThrow(violations -> new IllegalStateException(violations.toString()));
+        return draftProjectValidator.validated(entity);
     }
 
     public DraftProjectJpaEntity mapToEntity(DraftProject draftProject) {

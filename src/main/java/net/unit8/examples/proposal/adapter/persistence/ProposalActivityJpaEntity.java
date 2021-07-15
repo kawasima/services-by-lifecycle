@@ -13,8 +13,7 @@ import java.sql.Timestamp;
 @Data
 public class ProposalActivityJpaEntity implements Serializable {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
 
     @JoinColumn(name = "proposal_id", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.ALL)

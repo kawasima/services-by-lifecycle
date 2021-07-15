@@ -21,6 +21,6 @@ public class DraftProjectName {
     }
 
     public static DraftProjectName of(String value) {
-        return validator.validate(value).orElseThrow(violations -> new IllegalArgumentException(violations.toString()));
+        return validator.validated(value);
     }
 }
